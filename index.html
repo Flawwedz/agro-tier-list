@@ -16,50 +16,19 @@ body {
 /* HEADER */
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-bottom: 20px;
-  flex-wrap: wrap;
 }
 
 .logo {
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 900;
   letter-spacing: 1px;
 }
 
 .logo span {
   color: #facc15;
-}
-
-/* CONTROLS */
-.controls {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-input {
-  padding: 8px 12px;
-  border-radius: 10px;
-  border: 1px solid #1e293b;
-  background: #020617;
-  color: white;
-}
-
-button {
-  padding: 8px 12px;
-  border-radius: 10px;
-  border: 1px solid #1e293b;
-  cursor: pointer;
-  background: #020617;
-  color: white;
-}
-
-button.active {
-  background: linear-gradient(180deg, #facc15, #eab308);
-  color: #020617;
-  font-weight: 700;
 }
 
 /* TIERS */
@@ -185,17 +154,14 @@ h2 {
 <body>
 
 <header>
-  <div class="logo">AGRO <span>TIERS</span></div>
-  <div class="controls">
-    <input type="text" id="search" placeholder="Search player...">
-  </div>
+  <div class="logo">🔥 TZ <span>Tier List</span> 🔥</div>
 </header>
 
 <!-- TIERS -->
 <div class="tier">
   <div class="tier-label ht1">HT1</div>
   <div class="tier-content">
-    <div class="player" onclick="openProfile('Zach','HT1','HT1','Crystal','Active')">
+    <div class="player" onclick="openProfile('Zach','HT1','HT1','Bente Uno','Active')">
       <img src="https://mc-heads.net/avatar/Zach/64">
       Zach 👑
     </div>
@@ -205,17 +171,122 @@ h2 {
 <div class="tier">
   <div class="tier-label lt1">LT1</div>
   <div class="tier-content">
-    <div class="player" onclick="openProfile('James','LT1','HT1','Sword','Active')">
+    <div class="player" onclick="openProfile('James','LT1','HT1','Bente Uno','Active')">
       <img src="https://mc-heads.net/avatar/James/64">
-      James
+      James (Peak HT1)
     </div>
-    <div class="player" onclick="openProfile('Nathan','LT1','HT1','Crystal','Active')">
+    <div class="player" onclick="openProfile('Nathan','LT1','HT1','Bente Uno','Active')">
       <img src="https://mc-heads.net/avatar/Nathan/64">
-      Nathan
+      Nathan (Peak HT1)
     </div>
-    <div class="player" onclick="openProfile('Ashton','LT1','HT1','SMP','Active')">
+    <div class="player" onclick="openProfile('Ashton','LT1','HT1','Bente Uno','Active')">
       <img src="https://mc-heads.net/avatar/Ashton/64">
-      Ashton
+      Ashton (Peak HT1)
+    </div>
+  </div>
+</div>
+
+<div class="tier">
+  <div class="tier-label ht2">HT2</div>
+  <div class="tier-content">
+    <div class="player" onclick="openProfile('Stephen','HT2','HT1','Bente Uno','Active')">
+      <img src="https://mc-heads.net/avatar/Stephen/64">
+      Stephen (Peak HT1)
+    </div>
+    <div class="player" onclick="openProfile('Adrian','HT2','LT1','Bente Uno','Active')">
+      <img src="https://mc-heads.net/avatar/Adrian/64">
+      Adrian (Peak LT1)
+    </div>
+    <div class="player" onclick="openProfile('Nash','HT2','HT1','Bente Uno','Retired')">
+      <img src="https://mc-heads.net/avatar/Nash/64">
+      Nash (Retired HT1)
+    </div>
+  </div>
+</div>
+
+<div class="tier">
+  <div class="tier-label lt2">LT2</div>
+  <div class="tier-content">
+    <div class="player" onclick="openProfile('Kenneth','LT2','HT2','Bente Uno','Retired')">
+      <img src="https://mc-heads.net/avatar/Kenneth/64">
+      Kenneth (Retired HT2)
+    </div>
+    <div class="player" onclick="openProfile('Drake','LT2','LT1','Bente Uno','Active')">
+      <img src="https://mc-heads.net/avatar/Drake/64">
+      Drake (Peak LT1)
+    </div>
+  </div>
+</div>
+
+<div class="tier">
+  <div class="tier-label ht3">HT3</div>
+  <div class="tier-content">
+    <div class="player">N/A</div>
+  </div>
+</div>
+
+<div class="tier">
+  <div class="tier-label lt3">LT3</div>
+  <div class="tier-content">
+    <div class="player" onclick="openProfile('Zayn','LT3','HT3','Bente Uno','Active')">
+      <img src="https://mc-heads.net/avatar/Zayn/64">
+      Zayn (Peak HT3)
+    </div>
+    <div class="player" onclick="openProfile('Dylan','LT3','HT3','Bente Uno','Retired')">
+      <img src="https://mc-heads.net/avatar/Dylan/64">
+      Dylan (Retired HT3)
+    </div>
+  </div>
+</div>
+
+<div class="tier">
+  <div class="tier-label ht4">HT4</div>
+  <div class="tier-content">
+    <div class="player" onclick="openProfile('Seth','HT4','LT3','Bente Uno','Active')">
+      <img src="https://mc-heads.net/avatar/Seth/64">
+      Seth (Peak LT3)
+    </div>
+  </div>
+</div>
+
+<div class="tier">
+  <div class="tier-label lt4">LT4</div>
+  <div class="tier-content">
+    <div class="player" onclick="openProfile('Franco','LT4','LT4','Bente Uno','Active')">
+      <img src="https://mc-heads.net/avatar/Franco/64">
+      Franco
+    </div>
+    <div class="player" onclick="openProfile('Life','LT4','LT4','Bente Uno','Active')">
+      <img src="https://mc-heads.net/avatar/Life/64">
+      Life
+    </div>
+    <div class="player" onclick="openProfile('CJ','LT4','LT4','Bente Uno','Active')">
+      <img src="https://mc-heads.net/avatar/CJ/64">
+      CJ
+    </div>
+  </div>
+</div>
+
+<div class="tier">
+  <div class="tier-label ht5">HT5</div>
+  <div class="tier-content">
+    <div class="player" onclick="openProfile('Harold','HT5','HT4','Bente Uno','Retired')">
+      <img src="https://mc-heads.net/avatar/Harold/64">
+      Harold (Retired HT4)
+    </div>
+  </div>
+</div>
+
+<div class="tier">
+  <div class="tier-label lt5">LT5</div>
+  <div class="tier-content">
+    <div class="player" onclick="openProfile('Kim','LT5','LT5','Bente Uno','Retired')">
+      <img src="https://mc-heads.net/avatar/Kim/64">
+      Kim lalake frfr (Retired)
+    </div>
+    <div class="player" onclick="openProfile('Kenzo','LT5','LT5','Bente Uno','Retired')">
+      <img src="https://mc-heads.net/avatar/Kenzo/64">
+      Kenzo (Retired)
     </div>
   </div>
 </div>
@@ -235,22 +306,15 @@ h2 {
 
 <h2>(Unranked)</h2>
 <div class="unranked">
-  Osadi, Prince, Tam Tam, Max, Jannel, Noah, Joy, Chloe, Peter, Kyle
+  Osadi, Prince, Tam Tam, Harold, Pinsan nila oyo, Kim chua, Max, Jannel,
+  Ethan (Retired LT1), Yang yang, Tasha, Noah, Joy, Jenira, Pinsan ni zayn,
+  Craig, Kuya rock, Johann, Marian (Retired LT1), Chloe, Peter, Aki, Wynter,
+  Thea, Red, Pinsan nila thea kung sino man yun, Jacob, Keisha, Ace, Larry,
+  Shawn, Kristopher (Retired HT1), Classmate ni Adrian (sa dulo),
+  Kapatid ni osadi, Pat pat kung sino man toh, Ate ni james, Jon Jon, Kyle
 </div>
 
 <script>
-const search = document.getElementById("search");
-const players = document.querySelectorAll(".player");
-
-search.addEventListener("input", () => {
-  const value = search.value.toLowerCase();
-  players.forEach(p => {
-    p.style.display = p.textContent.toLowerCase().includes(value)
-      ? "inline-flex"
-      : "none";
-  });
-});
-
 function openProfile(name,current,peak,mode,status){
   document.getElementById("modal").style.display="flex";
   document.getElementById("skin").src=`https://mc-heads.net/avatar/${name}/128`;
