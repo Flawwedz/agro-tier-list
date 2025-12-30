@@ -5,124 +5,117 @@
 <title>Agro Tier List</title>
 
 <style>
-  body {
-    font-family: Inter, Arial, sans-serif;
-    background: #0b1220;
-    color: #e5e7eb;
-    margin: 0;
-    padding: 20px;
-  }
+body {
+  font-family: Inter, Arial, sans-serif;
+  background: #0b1220;
+  color: #e5e7eb;
+  margin: 0;
+  padding: 20px;
+}
 
-  /* HEADER */
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
 
-  .logo {
-    font-size: 26px;
-    font-weight: 900;
-    letter-spacing: 1px;
-  }
+.logo {
+  font-size: 26px;
+  font-weight: 900;
+}
+.logo span { color: #ef4444; }
 
-  .logo span {
-    color: #ef4444;
-  }
+/* PLAYER CARDS */
+.player {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #334155;
+  padding: 8px 12px;
+  border-radius: 10px;
+  margin: 4px;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.player:hover { transform: scale(1.05); }
 
-  /* CONTROLS */
-  .controls {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
+.player img {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+}
 
-  input {
-    padding: 8px 12px;
-    border-radius: 8px;
-    border: none;
-    outline: none;
-    background: #1e293b;
-    color: white;
-  }
+/* TIERS */
+.tier {
+  display: flex;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #020617;
+}
+.tier-label {
+  width: 90px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tier-content {
+  flex: 1;
+  padding: 10px;
+  background: #1e293b;
+}
 
-  button {
-    padding: 8px 12px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    background: #334155;
-    color: white;
-  }
+/* TIER COLORS */
+.ht1{background:#7f1d1d}
+.lt1{background:#9a3412}
+.ht2{background:#92400e}
+.lt2{background:#a16207}
+.ht3{background:#365314}
+.lt3{background:#166534}
+.ht4{background:#1e3a8a}
+.lt4{background:#1e40af}
+.ht5{background:#312e81}
+.lt5{background:#3730a3}
 
-  button.active {
-    background: #ef4444;
-  }
+/* MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.modal-content {
+  background: #020617;
+  padding: 20px;
+  border-radius: 16px;
+  width: 320px;
+  text-align: center;
+}
+.modal img {
+  width: 80px;
+  border-radius: 12px;
+}
+.close {
+  margin-top: 15px;
+  background: #ef4444;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+}
+small { opacity: .7 }
 
-  /* TIERS */
-  .tier {
-    display: flex;
-    margin-bottom: 12px;
-    border-radius: 12px;
-    overflow: hidden;
-    background: #020617;
-  }
-
-  .tier-label {
-    width: 90px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .tier-content {
-    flex: 1;
-    padding: 10px;
-    background: #1e293b;
-  }
-
-  .player {
-    display: inline-block;
-    background: #334155;
-    padding: 8px 12px;
-    border-radius: 8px;
-    margin: 4px;
-    font-size: 14px;
-  }
-
-  .player small {
-    display: block;
-    opacity: 0.7;
-    font-size: 11px;
-  }
-
-  /* TIER COLORS */
-  .ht1 { background: #7f1d1d; }
-  .lt1 { background: #9a3412; }
-  .ht2 { background: #92400e; }
-  .lt2 { background: #a16207; }
-  .ht3 { background: #365314; }
-  .lt3 { background: #166534; }
-  .ht4 { background: #1e3a8a; }
-  .lt4 { background: #1e40af; }
-  .ht5 { background: #312e81; }
-  .lt5 { background: #3730a3; }
-
-  /* UNRANKED */
-  h2 {
-    margin-top: 30px;
-  }
-
-  .unranked {
-    background: #020617;
-    padding: 15px;
-    border-radius: 12px;
-    color: #cbd5f5;
-  }
+/* MOBILE */
+@media (max-width:600px){
+  .tier-label{width:70px}
+}
 </style>
 </head>
 
@@ -130,128 +123,60 @@
 
 <header>
   <div class="logo">AGRO <span>TIERS</span></div>
-
-  <div class="controls">
-    <input type="text" id="search" placeholder="Search player...">
-    <button class="active" onclick="filterMode('all')">All</button>
-    <button onclick="filterMode('crystal')">Crystal</button>
-    <button onclick="filterMode('sword')">Sword</button>
-    <button onclick="filterMode('smp')">SMP</button>
-  </div>
 </header>
 
 <!-- TIERS -->
-
 <div class="tier">
   <div class="tier-label ht1">HT1</div>
   <div class="tier-content">
-    <div class="player" data-mode="crystal">Zach 👑<small>Crystal</small></div>
+    <div class="player" onclick="openProfile('Zach','HT1','HT1','Crystal','Active')">
+      <img src="https://mc-heads.net/avatar/Zach/64">
+      Zach 👑
+    </div>
   </div>
 </div>
 
 <div class="tier">
   <div class="tier-label lt1">LT1</div>
   <div class="tier-content">
-    <div class="player" data-mode="sword">James<small>Peak HT1</small></div>
-    <div class="player" data-mode="crystal">Nathan<small>Peak HT1</small></div>
-    <div class="player" data-mode="smp">Ashton<small>Peak HT1</small></div>
+    <div class="player" onclick="openProfile('James','LT1','HT1','Sword','Active')">
+      <img src="https://mc-heads.net/avatar/James/64">
+      James
+    </div>
+    <div class="player" onclick="openProfile('Nathan','LT1','HT1','Crystal','Active')">
+      <img src="https://mc-heads.net/avatar/Nathan/64">
+      Nathan
+    </div>
   </div>
 </div>
 
-<div class="tier">
-  <div class="tier-label ht2">HT2</div>
-  <div class="tier-content">
-    <div class="player" data-mode="crystal">Stephen<small>Peak HT1</small></div>
-    <div class="player" data-mode="sword">Adrian<small>Peak LT1</small></div>
-    <div class="player" data-mode="smp">Nash<small>Retired HT1</small></div>
+<!-- PROFILE MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <img id="skin">
+    <h2 id="name"></h2>
+    <p>Current: <b id="current"></b></p>
+    <p>Peak: <b id="peak"></b></p>
+    <p>Mode: <b id="mode"></b></p>
+    <small>Status: <span id="status"></span></small>
+    <br>
+    <button class="close" onclick="closeProfile()">Close</button>
   </div>
-</div>
-
-<div class="tier">
-  <div class="tier-label lt2">LT2</div>
-  <div class="tier-content">
-    <div class="player" data-mode="sword">Kenneth<small>Retired HT2</small></div>
-    <div class="player" data-mode="crystal">Drake<small>Peak LT1</small></div>
-  </div>
-</div>
-
-<div class="tier">
-  <div class="tier-label ht3">HT3</div>
-  <div class="tier-content">
-    <div class="player" data-mode="all">N/A</div>
-  </div>
-</div>
-
-<div class="tier">
-  <div class="tier-label lt3">LT3</div>
-  <div class="tier-content">
-    <div class="player" data-mode="crystal">Zayn<small>Peak HT3</small></div>
-    <div class="player" data-mode="smp">Dylan<small>Retired HT3</small></div>
-  </div>
-</div>
-
-<div class="tier">
-  <div class="tier-label ht4">HT4</div>
-  <div class="tier-content">
-    <div class="player" data-mode="sword">Seth<small>Peak LT3</small></div>
-  </div>
-</div>
-
-<div class="tier">
-  <div class="tier-label lt4">LT4</div>
-  <div class="tier-content">
-    <div class="player" data-mode="all">Franco</div>
-    <div class="player" data-mode="all">Life</div>
-    <div class="player" data-mode="all">CJ</div>
-  </div>
-</div>
-
-<div class="tier">
-  <div class="tier-label ht5">HT5</div>
-  <div class="tier-content">
-    <div class="player" data-mode="smp">Harold<small>Retired HT4</small></div>
-  </div>
-</div>
-
-<div class="tier">
-  <div class="tier-label lt5">LT5</div>
-  <div class="tier-content">
-    <div class="player" data-mode="all">Kim lalake frfr<small>Retired</small></div>
-    <div class="player" data-mode="all">Kenzo<small>Retired</small></div>
-  </div>
-</div>
-
-<h2>(Unranked)</h2>
-<div class="unranked">
-  Osadi, Prince, Tam Tam, Harold, Kim chua, Max, Jannel, Yang yang, Noah, Joy,
-  Chloe, Peter, Ace, Larry, Shawn, Kyle
 </div>
 
 <script>
-  const search = document.getElementById("search");
-  const players = document.querySelectorAll(".player");
-  const buttons = document.querySelectorAll("button");
-
-  search.addEventListener("input", () => {
-    const value = search.value.toLowerCase();
-    players.forEach(p => {
-      p.style.display = p.textContent.toLowerCase().includes(value)
-        ? "inline-block"
-        : "none";
-    });
-  });
-
-  function filterMode(mode) {
-    buttons.forEach(b => b.classList.remove("active"));
-    event.target.classList.add("active");
-
-    players.forEach(p => {
-      p.style.display =
-        mode === "all" || p.dataset.mode === mode
-          ? "inline-block"
-          : "none";
-    });
-  }
+function openProfile(name,current,peak,mode,status){
+  document.getElementById("modal").style.display="flex";
+  document.getElementById("skin").src=`https://mc-heads.net/avatar/${name}/128`;
+  document.getElementById("name").innerText=name;
+  document.getElementById("current").innerText=current;
+  document.getElementById("peak").innerText=peak;
+  document.getElementById("mode").innerText=mode;
+  document.getElementById("status").innerText=status;
+}
+function closeProfile(){
+  document.getElementById("modal").style.display="none";
+}
 </script>
 
 </body>
