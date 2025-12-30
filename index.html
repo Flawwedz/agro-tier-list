@@ -7,7 +7,7 @@
 <style>
 body {
   font-family: Inter, Arial, sans-serif;
-  background: #0b1220;
+  background: radial-gradient(circle at top, #0f172a, #020617);
   color: #e5e7eb;
   margin: 0;
   padding: 20px;
@@ -25,22 +25,86 @@ header {
 .logo {
   font-size: 26px;
   font-weight: 900;
+  letter-spacing: 1px;
 }
-.logo span { color: #ef4444; }
+
+.logo span {
+  color: #facc15;
+}
+
+/* CONTROLS */
+.controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+input {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid #1e293b;
+  background: #020617;
+  color: white;
+}
+
+button {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid #1e293b;
+  cursor: pointer;
+  background: #020617;
+  color: white;
+}
+
+button.active {
+  background: linear-gradient(180deg, #facc15, #eab308);
+  color: #020617;
+  font-weight: 700;
+}
+
+/* TIERS */
+.tier {
+  display: flex;
+  margin-bottom: 12px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #0b1220, #020617);
+  border: 1px solid #1e293b;
+}
+
+.tier-label {
+  width: 90px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.5px;
+}
+
+.tier-content {
+  flex: 1;
+  padding: 12px;
+}
 
 /* PLAYER CARDS */
 .player {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #334155;
+  background: #020617;
+  border: 1px solid #1e293b;
   padding: 8px 12px;
-  border-radius: 10px;
+  border-radius: 12px;
   margin: 4px;
+  font-size: 14px;
   cursor: pointer;
-  transition: transform 0.15s;
+  transition: transform .15s ease, box-shadow .15s ease;
 }
-.player:hover { transform: scale(1.05); }
+
+.player:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.4);
+}
 
 .player img {
   width: 28px;
@@ -48,32 +112,17 @@ header {
   border-radius: 6px;
 }
 
-/* TIERS */
-.tier {
-  display: flex;
-  margin-bottom: 12px;
-  border-radius: 12px;
-  overflow: hidden;
-  background: #020617;
-}
-.tier-label {
-  width: 90px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.tier-content {
-  flex: 1;
-  padding: 10px;
-  background: #1e293b;
+.player small {
+  display: block;
+  font-size: 11px;
+  opacity: .6;
 }
 
 /* TIER COLORS */
-.ht1{background:#7f1d1d}
-.lt1{background:#9a3412}
-.ht2{background:#92400e}
-.lt2{background:#a16207}
+.ht1{background:#854d0e}
+.lt1{background:#a16207}
+.ht2{background:#713f12}
+.lt2{background:#92400e}
 .ht3{background:#365314}
 .lt3{background:#166534}
 .ht4{background:#1e3a8a}
@@ -85,36 +134,50 @@ header {
 .modal {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,.6);
+  background: rgba(0,0,0,.65);
   display: none;
   align-items: center;
   justify-content: center;
+  z-index: 10;
 }
+
 .modal-content {
-  background: #020617;
+  background: linear-gradient(180deg, #0b1220, #020617);
+  border: 1px solid #1e293b;
   padding: 20px;
   border-radius: 16px;
   width: 320px;
   text-align: center;
 }
+
 .modal img {
   width: 80px;
   border-radius: 12px;
 }
+
 .close {
   margin-top: 15px;
-  background: #ef4444;
+  background: #facc15;
   border: none;
   padding: 8px 12px;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
-  color: white;
+  color: #020617;
+  font-weight: 700;
 }
-small { opacity: .7 }
 
-/* MOBILE */
-@media (max-width:600px){
-  .tier-label{width:70px}
+/* UNRANKED */
+h2 {
+  margin-top: 30px;
+  opacity: .8;
+}
+
+.unranked {
+  background: linear-gradient(180deg, #0b1220, #020617);
+  border: 1px solid #1e293b;
+  padding: 15px;
+  border-radius: 14px;
+  color: #cbd5f5;
 }
 </style>
 </head>
@@ -123,6 +186,9 @@ small { opacity: .7 }
 
 <header>
   <div class="logo">AGRO <span>TIERS</span></div>
+  <div class="controls">
+    <input type="text" id="search" placeholder="Search player...">
+  </div>
 </header>
 
 <!-- TIERS -->
@@ -147,6 +213,10 @@ small { opacity: .7 }
       <img src="https://mc-heads.net/avatar/Nathan/64">
       Nathan
     </div>
+    <div class="player" onclick="openProfile('Ashton','LT1','HT1','SMP','Active')">
+      <img src="https://mc-heads.net/avatar/Ashton/64">
+      Ashton
+    </div>
   </div>
 </div>
 
@@ -158,13 +228,29 @@ small { opacity: .7 }
     <p>Current: <b id="current"></b></p>
     <p>Peak: <b id="peak"></b></p>
     <p>Mode: <b id="mode"></b></p>
-    <small>Status: <span id="status"></span></small>
-    <br>
+    <small>Status: <span id="status"></span></small><br>
     <button class="close" onclick="closeProfile()">Close</button>
   </div>
 </div>
 
+<h2>(Unranked)</h2>
+<div class="unranked">
+  Osadi, Prince, Tam Tam, Max, Jannel, Noah, Joy, Chloe, Peter, Kyle
+</div>
+
 <script>
+const search = document.getElementById("search");
+const players = document.querySelectorAll(".player");
+
+search.addEventListener("input", () => {
+  const value = search.value.toLowerCase();
+  players.forEach(p => {
+    p.style.display = p.textContent.toLowerCase().includes(value)
+      ? "inline-flex"
+      : "none";
+  });
+});
+
 function openProfile(name,current,peak,mode,status){
   document.getElementById("modal").style.display="flex";
   document.getElementById("skin").src=`https://mc-heads.net/avatar/${name}/128`;
