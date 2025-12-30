@@ -1,1 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Agro Tier List</title>
+
+<style>
+body {
+  font-family: Inter, Arial, sans-serif;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color: #e5e7eb;
+  margin: 0;
+  padding: 20px;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.logo span {
+  color: #facc15;
+}
+
+/* TIERS */
+.tier {
+  display: flex;
+  margin-bottom: 12px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #0b1220, #020617);
+  border: 1px solid #1e293b;
+}
+
+.tier-label {
+  width: 90px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.5px;
+}
+
+.tier-content {
+  flex: 1;
+  padding: 12px;
+}
+
+/* PLAYER CARDS */
+.player {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #020617;
+  border: 1px solid #1e293b;
+  padding: 8px 12px;
+  border-radius: 12px;
+  margin: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.player:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.4);
+}
+
+.player img {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+}
+
+.player small {
+  display: block;
+  font-size: 11px;
+  opacity: .6;
+}
+
+/* TIER COLORS */
+.ht1{background:#854d0e}
+.lt1{background:#a16207}
+.ht2{background:#713f12}
+.lt2{background:#92400e}
+.ht3{background:#365314}
+.lt3{background:#166534}
+.ht4{background:#1e3a8a}
+.lt4{background:#1e40af}
+.ht5{background:#312e81}
+.lt5{background:#3730a3}
+
+/* MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.65);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.modal-content {
+  background: linear-gradient(180deg, #0b1220, #020617);
+  border: 1px solid #1e293b;
+  padding: 20px;
+  border-radius: 16px;
+  width: 320px;
+  text-align: center;
+}
+
+.modal img {
+  width: 80px;
+  border-radius: 12px;
+}
+
+.close {
+  margin-top: 15px;
+  background: #facc15;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #020617;
+  font-weight: 700;
+}
+
+/* UNRANKED */
+h2 {
+  margin-top: 30px;
+  opacity: .8;
+}
+
+.unranked {
+  background: linear-gradient(180deg, #0b1220, #020617);
+  border: 1px solid #1e293b;
+  padding: 15px;
+  border-radius: 14px;
+  color: #cbd5f5;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🔥 TZ <span>Tier List</span> 🔥</div>
+</header>
+
+<!-- TIERS -->
+<div class="tier">
+  <div class="tier-label ht1">HT1</div>
+  <div class="tier-content">
+    <div class="player" onclick="openProfile('Zach','HT1','HT1','Crystal','Active')">
+      <img src="https://mc-heads.net/avatar/Zach/64">
+      Zach 👑
+    </div>
+  </div>
+</div>
+
+<div class="tier">
+  <div class="tier-label lt1">LT1</div>
+  <div class="tier-content">
+    <div class="player" onclick="openProfile('James','LT1','HT1','Sword','Active')">
+      <img src="https://mc-heads.net/avatar/James/64">
+      James (Peak HT1)
+    </div>
+    <div class="player" onclick="openProfile('Nathan','LT1','HT1','Crystal','Active')">
+      <img src="https://mc-heads.net/avatar/Nathan/64">
+      Nathan (Peak HT1)
+    </div>
+    <div class="player" onclick="openProfile('Ashton','LT1','HT1','SMP','Active')">
+      <img src="https://mc-heads.net/avatar/Ashton/64">
+      Ashton (Peak HT1)
+    </div>
+  </div>
+</div>
+
+<div class="tier">
+  <div class="tier-label ht2">HT2</div>
+  <div class="tier-content">
+    <div class="player" onclick="openProfile('Stephen','HT2','HT1','SMP','Active')">
+      <img src="https://mc-heads.net/avatar/Stephen/64">
+      Stephen (Peak HT1)
+    </div>
+    <div class="player" onclick="openProfile('Adrian','HT2','LT1','Sword','Active')">
+      <img src="https://mc-heads.net/avatar/Adrian/64">
+      Adrian (Peak LT1)
+    </div>
+    <div class="player" onclick="openProfile('Nash','HT2','HT1','Crystal','Retired')">
+      <img src="https://mc-heads.net/avatar/Nash/64">
+      Nash (Retired HT1)
+    </div>
+  </div>
+</div>
+
+<div class="tier">
+  <div class="tier-label lt2">LT2</div>
+  <div class="tier-content">
+    <div class="player" onclick="openProfile('Kenneth','LT2','HT2','SMP','Retired')">
+      <img src="https://mc-heads.net/avatar/Kenneth/64">
+      Kenneth (Retired HT2)
+    </div>
+    <div class="player" onclick="openProfile('Drake','LT2','LT1','Sword','Active')">
+      <img src="https://mc-heads.net/avatar/Drake/64">
+      Drake (Peak LT1)
+    </div>
+  </div>
+</div>
+
+<div class="tier">
+  <div class="tier-label ht3">HT3</div>
+  <div class="tier-content">
+    <div class="player">N/A</div>
+  </div>
+</div>
+
+<div class="tier">
+  <div class="tier-label lt3">LT3</div>
+  <div class="tier-content">
+    <div class="player" onclick="openProfile('Zayn','LT3','HT3','SMP','Active')">
+      <img src="https://mc-heads.net/avatar/Zayn/64">
+      Zayn (Peak HT3)
+    </div>
+    <div class="player" onclick="openProfile('Dylan','LT3','HT3','Sword','Retired')">
+      <img src="https://mc-heads.net/avatar/Dylan/64">
+      Dylan (Retired HT3)
+    </div>
+  </div>
+</div>
+
+<div class="tier">
+  <div class="tier-label ht4">HT4</div>
+  <div class="tier-content">
+    <div class="player" onclick="openProfile('Seth','HT4','LT3','Crystal','Active')">
+      <img src="https://mc-heads.net/avatar/Seth/64">
+      Seth (Peak LT3)
+    </div>
+  </div>
+</div>
+
+<div class="tier">
+  <div class="tier-label lt4">LT4</div>
+  <div class="tier-content">
+    <div class="player" onclick="openProfile('Franco','LT4','LT4','Sword','Active')">
+      <img src="https://mc-heads.net/avatar/Franco/64">
+      Franco
+    </div>
+    <div class="player" onclick="openProfile('Life','LT4','LT4','SMP','Active')">
+      <img src="https://mc-heads.net/avatar/Life/64">
+      Life
+    </div>
+    <div class="player" onclick="openProfile('CJ','LT4','LT4','Crystal','Active')">
+      <img src="https://mc-heads.net/avatar/CJ/64">
+      CJ
+    </div>
+  </div>
+</div>
+
+<div class="tier">
+  <div class="tier-label ht5">HT5</div>
+  <div class="tier-content">
+    <div class="player" onclick="openProfile('Harold','HT5','HT4','SMP','Retired')">
+      <img src="https://mc-heads.net/avatar/Harold/64">
+      Harold (Retired HT4)
+    </div>
+  </div>
+</div>
+
+<div class="tier">
+  <div class="tier-label lt5">LT5</div>
+  <div class="tier-content">
+    <div class="player" onclick="openProfile('Kim','LT5','LT5','SMP','Retired')">
+      <img src="https://mc-heads.net/avatar/Kim/64">
+      Kim lalake frfr (Retired)
+    </div>
+    <div class="player" onclick="openProfile('Kenzo','LT5','LT5','Sword','Retired')">
+      <img src="https://mc-heads.net/avatar/Kenzo/64">
+      Kenzo (Retired)
+    </div>
+  </div>
+</div>
+
+<!-- PROFILE MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <img id="skin">
+    <h2 id="name"></h2>
+    <p>Current: <b id="current"></b></p>
+    <p>Peak: <b id="peak"></b></p>
+    <p>Mode: <b id="mode"></b></p>
+    <small>Status: <span id="status"></span></small><br>
+    <button class="close" onclick="closeProfile()">Close</button>
+  </div>
+</div>
+
+<h2>(Unranked)</h2>
+<div class="unranked">
+  Osadi, Prince, Tam Tam, Harold, Pinsan nila oyo, Kim chua, Max, Jannel,
+  Ethan (Retired LT1), Yang yang, Tasha, Noah, Joy, Jenira, Pinsan ni zayn,
+  Craig, Kuya rock, Johann, Marian (Retired LT1), Chloe, Peter, Aki, Wynter,
+  Thea, Red, Pinsan nila thea kung sino man yun, Jacob, Keisha, Ace, Larry,
+  Shawn, Kristopher (Retired HT1), Classmate ni Adrian (sa dulo),
+  Kapatid ni osadi, Pat pat kung sino man toh, Ate ni james, Jon Jon, Kyle
+</div>
+
+<script>
+function openProfile(name,current,peak,mode,status){
+  document.getElementById("modal").style.display="flex";
+  document.getElementById("skin").src=`https://mc-heads.net/avatar/${name}/128`;
+  document.getElementById("name").innerText=name;
+  document.getElementById("current").innerText=current;
+  document.getElementById("peak").innerText=peak;
+  document.getElementById("mode").innerText=mode;
+  document.getElementById("status").innerText=status;
+}
+function closeProfile(){
+  document.getElementById("modal").style.display="none";
+}
+</script>
+
+</body>
+</html>
 
